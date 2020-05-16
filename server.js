@@ -7,7 +7,7 @@ var compiler = webpack(webpackConfig);
 
 // Create our app
 var app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
@@ -22,7 +22,7 @@ app.use(require("webpack-hot-middleware")(compiler));
 
 app.use(function(req, res, next) {
     if (req.headers['x-forwarded-proto'] === 'https') {
-        res.redirect('https://' + req.hostname + req.url);
+        res.redirect('http://' + req.hostname + req.url);
     } else {
         next();
     }
