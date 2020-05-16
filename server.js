@@ -7,7 +7,7 @@ var compiler = webpack(webpackConfig);
 
 // Create our app
 var app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
